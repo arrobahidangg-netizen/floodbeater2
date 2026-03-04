@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rota Segura Recife</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <h1>Rota Segura Recife</h1>
+        <p>Mapa interativo com geografia real e simulação de alagamento</p>
+      </div>
+      <button id="newMapBtn" class="primary">Gerar novo mapa</button>
+    </header>
+
+    <main class="layout">
+      <section class="map-panel">
+        <div class="map-header">
+          <div>
+            <h2>Mapa de Alagamento</h2>
+            <p id="statusText">Clique no mapa para definir origem e destino</p>
+          </div>
+          <div class="mode-buttons">
+            <button id="setStartBtn">Definir origem</button>
+            <button id="setEndBtn">Definir destino</button>
+          </div>
+        </div>
+        <div id="map"></div>
+        <div class="legend">
+          <span class="legend-item"><span class="swatch low"></span>Baixo alagamento</span>
+          <span class="legend-item"><span class="swatch mid"></span>Médio alagamento</span>
+          <span class="legend-item"><span class="swatch high"></span>Alto alagamento</span>
+          <span class="legend-item"><span class="swatch blocked"></span>Intransitável</span>
+          <span class="legend-item"><span class="swatch path"></span>Melhor rota</span>
+        </div>
+      </section>
+
+      <aside class="side-panel">
+        <section class="card">
+          <h2>Resumo da Rota</h2>
+          <div class="stats">
+            <div>
+              <span class="label">Tempo estimado</span>
+              <strong id="etaText">--</strong>
+            </div>
+            <div>
+              <span class="label">Distância aproximada</span>
+              <strong id="distanceText">--</strong>
+            </div>
+            <div>
+              <span class="label">Trechos críticos</span>
+              <strong id="riskText">--</strong>
+            </div>
+          </div>
+          <button id="recalcBtn" class="primary">Recalcular rota</button>
+        </section>
+
+        <section class="card">
+          <h2>Alertas Solidários</h2>
+          <p>Comunique pessoas que possam apoiar evacuação de PCDs e idosos.</p>
+          <ul id="helpList" class="alert-list"></ul>
+          <button id="sendHelpBtn">Enviar alerta solidário</button>
+          <div id="toast" class="toast hidden"></div>
+        </section>
+      </aside>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
